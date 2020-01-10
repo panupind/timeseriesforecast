@@ -1,3 +1,14 @@
+# Sys.unsetenv("http-proxy")
+# Sys.unsetenv("https-proxy")
+# 
+# 
+# Sys.setenv(http_proxy = "http://www-proxy.us.oracle.com:80")
+# Sys.setenv(https_proxy = "https://www-proxy.us.oracle.com:80")
+# Sys.getenv("http_proxy")
+# Sys.getenv("https_proxy")
+
+
+
 library(readr)
 GDPIndia <- read_csv("D:/Prasanna/Personal/Learning/Other Univ Reads/GL/Course Material/TimeSeries Forecasting/Datasets/GDPIndia.csv")
 View(GDPIndia)
@@ -29,16 +40,21 @@ TractorSales.ts = ts(TractorSales[,2], start=c(2003,1), frequency = 12)
 TractorSales.ts
 dim(TractorSales.ts)
 plot(TractorSales.ts)
+Sys.setenv("http_proxy"="")
+Sys.setenv("https_proxy"="")
 
-Sys.unsetenv("http-proxy")
-Sys.unsetenv("https-proxy")
-
-
-Sys.setenv(http_proxy = "http://www-proxy.us.oracle.com:80")
-Sys.setenv(https_proxy = "https://www-proxy.us.oracle.com:80")
 Sys.getenv("http_proxy")
-Sys.getenv("https_proxy")
 
 
+# install.packages("forecast")
+# library(forecast)
 
 
+monthplot(TractorSales.ts)
+seasonplot(TractorSales.ts)
+
+library(ggplot2)
+
+ggseasonplot(TractorSales.ts)
+
+plot(decompose(TractorSales.ts))
