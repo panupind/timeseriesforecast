@@ -21,6 +21,14 @@ GDPIndia.ts = ts(GDPIndia[,2],start = GDPIndia[1,1])
 
 
 
+
+GDPUS <- read_csv("D:/Prasanna/Personal/Learning/Other Univ Reads/GL/Course Material/TimeSeries Forecasting/Datasets/GDPUS.csv")
+dim(GDPUS)
+GDPUS[1,]
+GDPUS.ts = ts(GDPUS[,2], start = 1929)
+plot(GDPUS.ts)
+
+
 Petrol= GDPIndia <- read_csv("D:/Prasanna/Personal/Learning/Other Univ Reads/GL/Course Material/TimeSeries Forecasting/Datasets/Petrol.csv")
 dim(Petrol)
 names(Petrol)
@@ -40,14 +48,11 @@ TractorSales.ts = ts(TractorSales[,2], start=c(2003,1), frequency = 12)
 TractorSales.ts
 dim(TractorSales.ts)
 plot(TractorSales.ts)
-Sys.setenv("http_proxy"="")
-Sys.setenv("https_proxy"="")
 
-Sys.getenv("http_proxy")
 
 
 # install.packages("forecast")
-# library(forecast)
+ library(forecast)
 
 
 monthplot(TractorSales.ts)
@@ -57,4 +62,25 @@ library(ggplot2)
 
 ggseasonplot(TractorSales.ts)
 
+decompose(TractorSales.ts)
+
 plot(decompose(TractorSales.ts))
+
+par(mfrow=c(1,1))
+
+# forecasting
+
+hw(TractorSales.ts)
+
+plot(hw(TractorSales.ts))
+
+hw(GDPIndia.ts)
+
+
+holt(GDPIndia.ts)
+
+plot(holt(GDPIndia.ts))
+
+
+install.packages("Rcmdr")
+library(Rcmdr)

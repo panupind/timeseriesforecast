@@ -1,6 +1,13 @@
-# Sys.unsetenv("http-proxy")
-# Sys.unsetenv("https-proxy")
+Sys.unsetenv("http-proxy")
+Sys.unsetenv("https-proxy")
+
+Sys.setenv(http_proxy = "")
 Sys.getenv("http_proxy")
+
+Sys.setenv(https_proxy = "")
+Sys.getenv("https_proxy")
+
+
 Sys.setenv()
 
 library(readr)
